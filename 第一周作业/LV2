@@ -5,11 +5,15 @@ import (
 	"math"
 )
 
-func Radius(r float64) float64 {
-	return r * r * math.Pi
-}
 func main() {
-	var r float64
-	fmt.Scanln(&r)
-	fmt.Println(Radius(r))
+	var a int
+	var b bool
+	b = true
+	fmt.Scanln(&a)
+	for i := 2; i <= int(math.Sqrt(float64(a))); i++ {
+		if a%i == 0 {
+			b = false
+		}
+	}
+	fmt.Println(b)
 }
