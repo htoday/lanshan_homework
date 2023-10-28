@@ -1,0 +1,12 @@
+package main
+
+import "fmt"
+
+func add(a int, b int) int {
+	return a + b
+}
+func main() {
+	var a, b int
+	fmt.Scanln(&a, &b)
+	fmt.Println(add(a, b))
+}
