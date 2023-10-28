@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func main() {
+	var a int
+	var b bool
+	b = true
+	fmt.Scanln(&a)
+	for i := 2; i <= a/2; i++ {
+		if a%i == 0 {
+			b = false
+		}
+	}
+	fmt.Println(b)
+}
