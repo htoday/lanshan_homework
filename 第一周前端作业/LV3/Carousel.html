@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="bootstrap.css">
+	<script src="bootstrap.js"></script>
+    <title>轮播图</title>
+    <style>
+        /* 自定的按钮动画 */
+          .carousel-control-prev{
+            opacity: 0.3;
+            transition: all 500ms;
+          }
+          .carousel-control-next{
+            opacity: 0.3;
+            transition: all 500ms;
+          }
+    </style>
+</head>
+<body>
+    <div id="ppt" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+        <div class="carousel-inner">
+                <div class="carousel-item active"><img src="芳乃.webp" class="d-block" alt="芳乃" style="width: 100%;"></div>
+                <div class="carousel-item"><img src="茉子.webp" class="d-block" alt="茉子" style="width: 100%;"></div>
+                <div class="carousel-item"><img src="丛雨.webp" class="d-block" alt="丛雨" style="width: 100%;"></div>
+        </div>
+
+
+        <!-- 左右切换按钮 -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#ppt" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#ppt" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+        <!-- 点 -->
+        <div class="carousel-indicators">
+            <li data-bs-target="#ppt" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#ppt" data-bs-slide-to="1"></li>
+            <li data-bs-target="#ppt" data-bs-slide-to="2"></li>
+        </div>
+
+    </div>
+    
+</body>
+</html>
