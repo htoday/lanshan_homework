@@ -1,0 +1,131 @@
+package main
+
+import (
+	"fmt"
+)
+
+type goods struct {
+	Name   string
+	Price  float64
+	Number int64
+}
+type EProduct struct {
+	Brand string
+	Mod   string
+	Good  goods
+}
+type manager interface {
+	Add()
+	Delete()
+	Check()
+	Update(int64)
+}
+
+func Add(a manager) {
+	a.Add()
+}
+func Delete(a manager) {
+	a.Delete()
+}
+func Check(a manager) {
+	a.Check()
+}
+func (a *goods) Add() {
+	s1 = append(s1, *a)
+	fmt.Println("已经添加商品", a.Name)
+}
+func (a *EProduct) Add() {
+	s2 = append(s2, *a)
+	fmt.Println("已经添加商品", a.Good.Name)
+}
+func (a *goods) Check() {
+	fmt.Println("查找到", a.Name, "库存:", a.Number, "价格:", a.Price)
+}
+func (a *EProduct) Check() {
+	fmt.Println("查找到", a.Good.Name, "品牌：", a.Brand, "型号:", a.Mod, "库存:", a.Good.Number, "价格:", a.Good.Price)
+}
+func (a *goods) Delete() {
+	var x int
+	for i, value := range s1 {
+		if value.Name == a.Name {
+			s1 = append(s1[:i], s1[i+1:]...)
+			x = i
+		}
+	}
+	fmt.Println("已经删除商品", a.Name, "位于第", x, "位")
+}
+func (a *EProduct) Delete() {
+	var x int
+	for i, value := range s2 {
+		if value.Good.Name == a.Good.Name {
+			s2 = append(s2[:i], s2[i+1:]...)
+			x = i
+		}
+	}
+	fmt.Println("已经删除商品", a.Good.Name, "位于第", x, "位")
+}
+func (a *goods) Update(number int64) {
+	a.Number += number
+	println("原数量为", a.Number-number, "更新后数量为", a.Number)
+}
+func (a *EProduct) Update(number int64) {
+	a.Good.Number += number
+	println("原数量为", a.Good.Number-number, "更新后数量为", a.Good.Number)
+}
+func checkout(a string) {
+	x := 0
+	for _, value := range s1 {
+		if value.Name == a {
+			x = 1
+			value.Check()
+		}
+	}
+	for _, value := range s2 {
+		if value.Brand == a || value.Good.Name == a || value.Mod == a {
+			x = 1
+			value.Check()
+		}
+	}
+	if x == 0 {
+		println("没找到哦")
+	}
+}
+func UpdateNum(a string, b int64) {
+	x := 0
+	for _, value := range s1 {
+		if value.Name == a {
+			x = 1
+			value.Update(b)
+		}
+	}
+	for _, value := range s2 {
+		if value.Brand == a || value.Good.Name == a || value.Mod == a {
+			x = 1
+			value.Update(b)
+		}
+	}
+	if x == 0 {
+		println("没找到哦")
+	}
+}
+
+var s1 []goods
+var s2 []EProduct
+
+func main() {
+	fmt.Println("欢迎使用电子商务平台v1.0")
+	fmt.Println("")
+	g1 := EProduct{"Apple", "IphoneX", goods{"手机", 999.99, 20}}
+	//g1.Add()
+	Add(&g1)
+	g2 := EProduct{"HuaWei", "MatePad", goods{"平板", 1999.99, 10}}
+	g2.Add()
+	g3 := goods{"书包", 300, 10}
+	g3.Add()
+	g4 := goods{"笔", 3, 60}
+	g4.Add()
+	g4.Delete()
+	g2.Delete()
+	checkout("书包")
+	UpdateNum("书包", 64)
+}
